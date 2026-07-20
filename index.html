@@ -1,0 +1,1030 @@
+<!--
+============================================
+PROJECT: Kikokotoo cha Makato Tanzania
+VERSION: 1.0
+CREATED: Julai 2026
+DEVELOPER: [Waisahi Mgoba]
+============================================
+-->
+
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="icon-192.png" sizes="192x192" />
+    <meta name="theme-color" content="#2563eb" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Makato" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <title>Kikokotoo cha Makato - Tanzania</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3214080517269189"crossorigin="anonymous"></script>
+<body>
+    <div class="container">
+        <h1>🧮 Kikokotoo cha Makato</h1>
+        <p class="subtitle">Linganisha makato ya M-Pesa, Mixx by Yas, Airtel, AzamPesa, Selcom na HaloPesa</p>
+
+        <div class="calculator">
+            <div class="input-group">
+                <label for="amount">Kiasi (TZS)</label>
+                <input type="number" id="amount" value="10000" min="1" step="500" />
+            </div>
+            <div class="input-group">
+                <label for="type">Aina ya Miamala</label>
+                <select id="type">
+                    <option value="send">Kutuma Pesa</option>
+                    <option value="withdraw">Kutoa Pesa (Wakala)</option>
+                </select>
+            </div>
+            <button id="calculateBtn" style="width: 100%;padding: 12px;background:#2563eb;color:white;border:none;border-radius:10px;font-size:18px;font-weight: 700;cursor:pointer;">🔍 Linganisha Makato</button>
+        </div>
+        <!--SEHEMU YA MATOKEO-->
+        <div id="results"></div>
+<!-- ========================================== -->
+<!-- SEHEMU YA HISTORIA (KWA PRO)              -->
+<!-- ========================================== -->
+<div id="historySection" style="display:none;background:#f8fafc;border-radius:14px;padding:20px;margin-top:20px;border:1px solid #e2e8f0;">
+    <h3 style="color:#1a2a3a;margin-bottom:12px;">📝 Historia ya Makato Yako</h3>
+    <p style="color:#4a5a6a;font-size:14px;margin-bottom:12px;">
+        Angalia makato yako ya awali (hii ni mfano wa kipengele cha Pro).
+    </p>
+    <div style="font-size:13px;color:#64748b;padding:10px;background:white;border-radius:8px;border:1px solid #e2e8f0;text-align:center;">
+        🕒 Hakuna miamala iliyorekodiwa bado.
+        <br><span style="font-size:11px;">(Kipengele hiki kitarekodi makato yako baadae)</span>
+    </div>
+</div>
+
+        <div id="results"> </div>
+
+        <div class="note">
+            <p>⚠️ Viwango hivi ni vya marejeleo. Thibitisha na mtoa huduma husika.</p>
+            <p>📅 Data imesasishwa: Julai 2025</p>
+        </div>
+
+<!-- ========================================== -->
+<!-- SEHEMU YA MKOPO                          -->
+<!-- ========================================== -->
+<div class="loan-section" style="background:#eff6ff;border-radius:14px;padding:20px;margin-top:20px;border:2px solid #2563eb;">
+    <h3 style="color:#1a2a3a;margin-bottom:12px;">💰 Kikokotoo cha Mkopo</h3>
+    <p style="color:#4a5a6a;font-size:14px;margin-bottom:12px;">
+        Hesabu gharama ya mkopo kabla ya kuchukua. Riba ni <strong>4% kwa mwezi</strong> (max).
+    </p>
+
+    <div style="display:flex;flex-direction:column;gap:12px;">
+        <div>
+            <label style="font-weight:600;font-size:14px;color:#1a2a3a;">Kiasi cha Mkopo (TZS)</label>
+            <input type="number" id="loanAmount" value="100000" min="1000" step="5000"
+                   style="width:100%;padding:10px 14px;border:2px solid #dce4ec;border-radius:8px;font-size:16px;margin-top:4px;" />
+        </div>
+        <div>
+            <label style="font-weight:600;font-size:14px;color:#1a2a3a;">Muda wa Mkopo (Miezi)</label>
+            <select id="loanMonths" style="width:100%;padding:10px 14px;border:2px solid #dce4ec;border-radius:8px;font-size:16px;margin-top:4px;">
+                <option value="1">Mwezi 1</option>
+                <option value="2">Miezi 2</option>
+                <option value="3" selected>Miezi 3</option>
+                <option value="4">Miezi 4</option>
+                <option value="5">Miezi 5</option>
+                <option value="6">Miezi 6</option>
+                <option value="9">Miezi 9</option>
+                <option value="12">Miezi 12</option>
+            </select>
+        </div>
+        <button id="calculateLoanBtn" style="padding:12px;background:#2563eb;color:white;border:none;border-radius:8px;cursor:pointer;font-weight:700;font-size:16px;">
+            📊 Hesabu Mkopo
+        </button>
+    </div>
+
+    <div id="loanResult" style="display:none;margin-top:15px;padding:15px;background:white;border-radius:8px;border:1px solid #dce4ec;">
+        <!-- Matokeo yataonyeshwa hapa -->
+    </div>
+</div>
+
+    <script>
+        // ============================================================
+        // DATA ZA MAKATO - Tanzania (Imesasishwa 2025)
+        // ============================================================
+
+        const feeData = {
+            'M-Pesa': {
+                send: [
+                    { min: 0, max: 5000, fee: 0 },
+                    { min: 5001, max: 30000, fee: 350 },
+                    { min: 30001, max: 250000, fee: 850 },
+                    { min: 250001, max: 500000, fee: 1500 },
+                    { min: 500001, max: 1000000, fee: 2000 },
+                    { min: 1000001, max: 5000000, fee: 4000 },
+                ],
+                withdraw: [
+                    { min: 0, max: 5000, fee: 0 },
+                    { min: 5001, max: 10000, fee: 1450 },
+                    { min: 10001, max: 14999, fee: 1450 },
+                    { min: 15000, max: 30000, fee: 1800 },
+                    { min: 30001, max: 50000, fee: 2300 },
+                    { min: 50001, max: 100000, fee: 2800 },
+                    { min: 100001, max: 300000, fee: 4500 },
+                    { min: 300001, max: 500000, fee: 7000 },
+                ]
+            },
+            'Mixx by Yas': {
+                send: [
+                    { min: 0, max: 50000, fee: 200 },
+                    { min: 50001, max: 500000, fee: 500 },
+                    { min: 500001, max: 1000000, fee: 1000 },
+                    { min: 1000001, max: 5000000, fee: 2000 },
+                ],
+                withdraw: [
+                    { min: 0, max: 50000, fee: 300 },
+                    { min: 50001, max: 500000, fee: 800 },
+                    { min: 500001, max: 1000000, fee: 1500 },
+                    { min: 1000001, max: 5000000, fee: 2500 },
+                ]
+            },
+            'Airtel Money': {
+                send: [
+                    { min: 0, max: 2000, fee: 0 },
+                    { min: 2001, max: 2999, fee: 70 },
+                    { min: 3000, max: 3999, fee: 100 },
+                    { min: 4000, max: 5000, fee: 150 },
+                    { min: 5001, max: 10000, fee: 200 },
+                    { min: 10001, max: 20000, fee: 500 },
+                    { min: 20001, max: 29999, fee: 920 },
+                    { min: 30000, max: 100000, fee: 1200 },
+                ],
+                withdraw: [
+                    { min: 0, max: 10000, fee: 0 },
+                    { min: 10001, max: 20000, fee: 500 },
+                    { min: 20001, max: 30000, fee: 920 },
+                    { min: 30001, max: 100000, fee: 1200 },
+                    { min: 100001, max: 300000, fee: 4500 },
+                    { min: 300001, max: 500000, fee: 7000 },
+                ]
+            },
+            'AzamPesa': {
+                send: [
+                    { min: 0, max: 7000, fee: 122 },
+                    { min: 7001, max: 20000, fee: 350 },
+                    { min: 20001, max: 50000, fee: 600 },
+                    { min: 50001, max: 100000, fee: 1000 },
+                    { min: 100001, max: 500000, fee: 1900 },
+                ],
+                withdraw: [
+                    { min: 0, max: 7000, fee: 122 },
+                    { min: 7001, max: 20000, fee: 350 },
+                    { min: 20001, max: 50000, fee: 600 },
+                    { min: 50001, max: 100000, fee: 1000 },
+                    { min: 100001, max: 500000, fee: 1900 },
+                ]
+            },
+            'Selcom Pesa': {
+                send: [
+                    { min: 0, max: 5000000, fee: 1900 },
+                ],
+                withdraw: [
+                    { min: 0, max: 5000000, fee: 1900 },
+                ]
+            },
+            'HaloPesa': {
+                send: [
+                    { min: 0, max: 5000000, fee: 0 },
+                ],
+                withdraw: [
+                    { min: 0, max: 100000, fee: 500 },
+                    { min: 100001, max: 500000, fee: 1000 },
+                ]
+            }
+        };
+
+        // ============================================================
+        // KAZI ZA KUKOKOTOA
+        // ============================================================
+
+        function calculateFee(provider, type, amount) {
+            const tiers = feeData[provider]?.[type];
+            if (!tiers) return 0;
+            
+            for (const tier of tiers) {
+                if (amount >= tier.min && amount <= tier.max) {
+                    return tier.fee;
+                }
+            }
+            
+            if (tiers.length > 0) {
+                return tiers[tiers.length - 1].fee;
+            }
+            return 0;
+        }
+
+        function formatFee(fee) {
+            return 'TZS ' + fee.toLocaleString();
+        }
+
+        function getColorClass(provider) {
+            const colors = {
+                'M-Pesa': 'green',
+                'Mixx by Yas': 'blue',
+                'Airtel Money': 'orange',
+                'AzamPesa': 'purple',
+                'Selcom Pesa': 'teal',
+                'HaloPesa': 'red'
+            };
+            return colors[provider] || 'gray';
+        }
+
+        // ============================================================
+        // SMART SPLIT
+        // ============================================================
+
+        function findBestSplit(amount, type, provider = 'M-Pesa') {
+            const results = [];
+            
+            for (let i = 10000; i <= amount / 2; i += 5000) {
+                const first = i;
+                const second = amount - i;
+                
+                const fee1 = calculateFee(provider, type, first);
+                const fee2 = calculateFee(provider, type, second);
+                const total = fee1 + fee2;
+                const original = calculateFee(provider, type, amount);
+                
+                if (total < original) {
+                    results.push({
+                        split: [first, second],
+                        totalFee: total,
+                        savings: original - total,
+                        originalFee: original
+                    });
+                }
+            }
+            
+            results.sort((a, b) => b.savings - a.savings);
+            return results[0];
+        }
+
+        // ============================================================
+        // ONYESHA MATOKEO
+        // ============================================================
+
+       function displayResults(amount, type) {
+    const resultsDiv = document.getElementById('results');
+    const providers = Object.keys(feeData);
+
+    const results = providers.map(provider => {
+        const fee = calculateFee(provider, type, amount);
+        return { provider, fee };
+    });
+
+    const minFee = Math.min(...results.map(r => r.fee));
+
+    let html = `<h3 style="margin-bottom:15px;color:#1a2a3a;">📊 Matokeo</h3>`;
+
+    results.forEach(({ provider, fee }) => {  // ← SAHIHI: { provider, fee }
+        const isBest = (fee === minFee && fee > 0);
+        const feeClass = getColorClass(provider);
+        const bestLabel = isBest ? `<span class="best-label">⭐ Nafuu</span>` : '';
+
+        html += `
+            <div class="result-card ${isBest ? 'best' : ''}">
+                <span class="provider">${provider} ${bestLabel}</span>
+                <span class="fee ${feeClass}">${formatFee(fee)}</span>
+            </div>
+        `;
+    });
+
+    // Smart Split Suggestion
+    const bestSplit = findBestSplit(amount, type, 'M-Pesa');
+    const originalFee = calculateFee('M-Pesa', type, amount);
+
+    if (bestSplit && bestSplit.savings > 0 && amount > 50000) {
+        const [part1, part2] = bestSplit.split;
+        html += `
+            <div class="split-tip">
+                <strong>💡 Kidokezo cha Smart Split - OKOA PESA!</strong>
+                <div style="margin-top:8px;padding:10px;background:white;border-radius:8px;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+                        <span>Mara moja (M-Pesa):</span>
+                        <span style="color:#dc2626;font-weight:700;">${formatFee(originalFee)}</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+                        <span>Gawanya TZS ${amount.toLocaleString()} → TZS ${part1.toLocaleString()} + TZS ${part2.toLocaleString()}:</span>
+                        <span style="color:#16a34a;font-weight:700;">${formatFee(bestSplit.totalFee)}</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;border-top:2px solid #e2e8f0;padding-top:8px;margin-top:5px;">
+                        <span style="font-size:16px;font-weight:700;">💰 UNAOKOA:</span>
+                        <span style="color:#16a34a;font-size:18px;font-weight:700;">${formatFee(bestSplit.savings)}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    // ← MUHIMU: Weka matokeo kwenye div!
+    resultsDiv.innerHTML = html;
+}
+
+
+        // ============================================================
+        // EVENT LISTENERS
+        // ============================================================
+
+        document.getElementById('calculateBtn').addEventListener('click', function() {
+            const amount = parseInt(document.getElementById('amount').value) || 0;
+            const type = document.getElementById('type').value;
+            
+            if (amount < 1) {
+                alert('Tafadhali ingiza kiasi sahihi.');
+                return;
+            }
+            
+            displayResults(amount, type);
+        });
+
+        window.addEventListener('load', function() {
+            document.getElementById('calculateBtn').click();
+        });
+         // Register Service Worker
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/sw.js')
+                .then(function(registration) {
+                    console.log('ServiceWorker registration successful');
+                })
+                .catch(function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+        });
+    }
+    </script>
+  <!-- ========================================== -->
+<!-- SEHEMU YA USALAMA                         -->
+<!-- ========================================== -->
+<div style="background:#f0fdf4;border-radius:14px;padding:20px;margin-top:20px;border:2px solid #16a34a;">
+    <h3 style="color:#1a2a3a;margin-bottom:12px;">🛡️ Angalia Usalama wa Namba</h3>
+    <p style="color:#4a5a6a;font-size:14px;margin-bottom:12px;">
+        Angalia kama namba ya simu imeripotiwa kwa ulaghai au wizi.
+    </p>
+
+    <!-- Onyesha idadi ya namba -->
+    <div style="font-size:13px;color:#64748b;margin-bottom:12px;text-align:center;background:#e2e8f0;padding:6px;border-radius:8px;">
+        📊 <span id="scamCountDisplay">0</span> namba za ulaghai zimehifadhiwa
+    </div>
+
+    <!-- Sehemu ya kuingiza namba -->
+    <div style="display:flex;gap:10px;margin-bottom:10px;">
+        <input type="text" id="scamCheckInput" placeholder="Weka namba (mfano: 0712345678)"
+               style="flex:1;padding:10px 14px;border:2px solid #dce4ec;border-radius:8px;font-size:16px;" />
+        <button onclick="checkScamNumber()"
+                style="padding:10px 20px;background:#2563eb;color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;width:auto;">
+            🔍 Angalia
+        </button>
+    </div>
+
+    <!-- Sehemu ya kuonyesha matokeo -->
+    <div id="scamResult" style="display:none;padding:12px 16px;border-radius:8px;margin-top:10px;"></div>
+
+    <!-- Ripoti namba mpya -->
+    <div style="margin-top:10px;">
+        <span onclick="toggleReportForm()" style="color:#2563eb;cursor:pointer;text-decoration:underline;font-size:14px;">
+            📝 Ripoti namba mpya ya ulaghai
+        </span>
+        
+        <div id="reportForm" style="display:none;margin-top:10px;padding:15px;background:white;border-radius:8px;border:1px solid #dce4ec;">
+            <p style="font-weight:600;margin-bottom:8px;color:#1a2a3a;">📝 Ripoti Namba ya Ulaghai</p>
+            <input type="text" id="reportNumber" placeholder="Weka namba ya simu (mfano: 0712345678)" 
+                   style="width:100%;padding:10px;border:2px solid #dce4ec;border-radius:8px;margin-bottom:8px;font-size:14px;" />
+            <textarea id="reportReason" placeholder="Eleza kwa nini unaripoti namba hii..." 
+                      style="width:100%;padding:10px;border:2px solid #dce4ec;border-radius:8px;font-size:14px;resize:vertical;min-height:60px;"></textarea>
+            <div style="display:flex;gap:8px;margin-top:8px;">
+                <button onclick="submitReport()" 
+                        style="padding:8px 20px;background:#dc2626;color:white;border:none;border-radius:6px;cursor:pointer;font-weight:600;">
+                    ✅ Tuma Ripoti
+                </button>
+                <button onclick="document.getElementById('reportForm').style.display='none'" 
+                        style="padding:8px 20px;background:#94a3b8;color:white;border:none;border-radius:6px;cursor:pointer;font-weight:600;">
+                    ❌ Funga
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+   <!-- ========================================== -->
+<!-- MSIMBO WA MKOPO - MOJA KWA MOJA            -->
+<!-- ========================================== -->
+<script>
+
+    // Hakikisha kitufe kinafanya kazi 100%
+    (function() {
+        // Subiri ukurasa upakie
+        if (document.readyState === 'complete') {
+            setupLoanButton();
+        } else {
+            window.addEventListener('load', setupLoanButton);
+        }
+
+        function setupLoanButton() {
+            var btn = document.getElementById('calculateLoanBtn');
+            if (btn) {
+                // Ondoa event listeners zote zilizopo
+                btn.replaceWith(btn.cloneNode(true));
+                var newBtn = document.getElementById('calculateLoanBtn');
+                
+                newBtn.addEventListener('click', function() {
+                    var amount = parseInt(document.getElementById('loanAmount').value) || 0;
+                    var months = parseInt(document.getElementById('loanMonths').value) || 3;
+                    
+                    if (amount < 1000) {
+                        alert('Tafadhali weka kiasi cha mkopo (angalau TZS 1,000)');
+                        return;
+                    }
+                    
+                    // Riba 4% kwa mwezi
+                    var monthlyRate = 0.04;
+                    var totalInterest = amount * monthlyRate * months;
+                    var totalPayment = amount + totalInterest;
+                    var monthlyPayment = totalPayment / months;
+                    
+                    // Onyesha matokeo
+                    var resultDiv = document.getElementById('loanResult');
+                    resultDiv.style.display = 'block';
+                    resultDiv.innerHTML = `
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:14px;">
+                            <div style="background:#f8fafc;padding:10px;border-radius:8px;">
+                                <span style="color:#64748b;">Kiasi cha Mkopo</span><br>
+                                <strong style="font-size:18px;color:#1a2a3a;">TZS ${amount.toLocaleString()}</strong>
+                            </div>
+                            <div style="background:#f8fafc;padding:10px;border-radius:8px;">
+                                <span style="color:#64748b;">Muda</span><br>
+                                <strong style="font-size:18px;color:#1a2a3a;">${months} ${months === 1 ? 'Mwezi' : 'Miezi'}</strong>
+                            </div>
+                            <div style="background:#f8fafc;padding:10px;border-radius:8px;">
+                                <span style="color:#64748b;">Riba Jumla (4%/mwezi)</span><br>
+                                <strong style="font-size:18px;color:#dc2626;">TZS ${totalInterest.toLocaleString()}</strong>
+                            </div>
+                            <div style="background:#f8fafc;padding:10px;border-radius:8px;">
+                                <span style="color:#64748b;">Malipo Kila Mwezi</span><br>
+                                <strong style="font-size:18px;color:#2563eb;">TZS ${Math.round(monthlyPayment).toLocaleString()}</strong>
+                            </div>
+                            <div style="background:#f8fafc;padding:10px;border-radius:8px;grid-column:span 2;">
+                                <span style="color:#64748b;">Jumla ya Malipo (Mkopo + Riba)</span><br>
+                                <strong style="font-size:20px;color:#16a34a;">TZS ${Math.round(totalPayment).toLocaleString()}</strong>
+                            </div>
+                        </div>
+                        <p style="font-size:12px;color:#64748b;margin-top:10px;text-align:center;border-top:1px solid #e2e8f0;padding-top:10px;">
+                            💡 Hakikisha unaelewa masharti kabla ya kuchukua mkopo.
+                        </p>
+                    `;
+                });
+                
+                // Pia fanya Enter ifanye kazi
+                var inputField = document.getElementById('loanAmount');
+                if (inputField) {
+                    inputField.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter') {
+                            newBtn.click();
+                        }
+                    });
+                }
+            }
+        }
+    })();
+</script>
+<!-- ========================================== -->
+<!-- SEHEMU YA JINSI YA KUPATA MKOPO (WAKALA) -->
+<!-- ========================================== -->
+<div style="background:#fef3c7;border-radius:14px;padding:20px;margin-top:20px;border:2px solid #f59e0b;">
+    <h3 style="color:#1a2a3a;margin-bottom:12px;">📱 Jinsi ya Kupata Mkopo</h3>
+    <p style="color:#4a5a6a;font-size:14px;margin-bottom:12px;">
+        Baada ya kuona gharama, unaweza kupata mkopo kupitia watoa huduma hawa. 
+        <strong>Bonyeza namba ya huduma</strong> ili kupiga simu au tumia USSD code.
+    </p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:14px;">
+        <!-- Tigo Nivushe -->
+        <div style="background:white;padding:12px;border-radius:8px;border:1px solid #e2e8f0;text-align:center;">
+            <div style="font-size:24px;margin-bottom:4px;">📱</div>
+            <div style="font-weight:700;color:#1a2a3a;">Tigo Nivushe</div>
+            <div style="font-size:12px;color:#64748b;margin:4px 0;">Kiasi hadi TZS 1,000,000</div>
+            <a href="tel:*150*01#" style="display:inline-block;margin-top:6px;padding:4px 12px;background:#2563eb;color:white;border-radius:6px;text-decoration:none;font-size:12px;">
+                *150*01#
+            </a>
+        </div>
+
+        <!-- M-Pesa Mkopo -->
+        <div style="background:white;padding:12px;border-radius:8px;border:1px solid #e2e8f0;text-align:center;">
+            <div style="font-size:24px;margin-bottom:4px;">📱</div>
+            <div style="font-weight:700;color:#1a2a3a;">M-Pesa Mkopo</div>
+            <div style="font-size:12px;color:#64748b;margin:4px 0;">Kiasi hadi TZS 500,000</div>
+            <a href="tel:*150*00#" style="display:inline-block;margin-top:6px;padding:4px 12px;background:#2563eb;color:white;border-radius:6px;text-decoration:none;font-size:12px;">
+                *150*00#
+            </a>
+        </div>
+
+        <!-- Selcom Pesa -->
+        <div style="background:white;padding:12px;border-radius:8px;border:1px solid #e2e8f0;text-align:center;">
+            <div style="font-size:24px;margin-bottom:4px;">📱</div>
+            <div style="font-weight:700;color:#1a2a3a;">Selcom Pesa</div>
+            <div style="font-size:12px;color:#64748b;margin:4px 0;">Kupitia App yao</div>
+            <a href="https://www.selcompesa.co.tz" target="_blank" style="display:inline-block;margin-top:6px;padding:4px 12px;background:#0d9488;color:white;border-radius:6px;text-decoration:none;font-size:12px;">
+                Fungua App
+            </a>
+        </div>
+
+        <!-- Benki -->
+        <div style="background:white;padding:12px;border-radius:8px;border:1px solid #e2e8f0;text-align:center;">
+            <div style="font-size:24px;margin-bottom:4px;">🏦</div>
+            <div style="font-weight:700;color:#1a2a3a;">Benki</div>
+            <div style="font-size:12px;color:#64748b;margin:4px 0;">NMB, CRDB, NBC</div>
+            <a href="#" style="display:inline-block;margin-top:6px;padding:4px 12px;background:#16a34a;color:white;border-radius:6px;text-decoration:none;font-size:12px;cursor:default;">
+                Tembelea Benki
+            </a>
+        </div>
+    </div>
+
+    <div style="margin-top:12px;padding:10px;background:#f8fafc;border-radius:8px;font-size:13px;color:#4a5a6a;border:1px dashed #94a3b8;">
+        <strong>💡 Kidokezo:</strong> Kabla ya kuchukua mkopo, hakikisha unaelewa riba, muda, na masharti yote. 
+        Linganisha watoa huduma tofauti ili kupata nafuu.
+    </div>
+</div>
+<!-- ========================================== -->
+<!-- MSIMBO WA USALAMA (KWA MKONO)             -->
+<!-- ========================================== -->
+<script>
+    function checkScamNumber() {
+        var input = document.getElementById('scamCheckInput');
+        var number = input.value.trim();
+        
+        if (!number) {
+            alert('Tafadhali weka namba ya simu.');
+            return;
+        }
+        
+        var scamNumbers = ['0712345678', '0755123456', '0688123456', '0788123456', '0765123456'];
+        
+        var cleanNumber = number;
+        if (cleanNumber.startsWith('+255')) {
+            cleanNumber = '0' + cleanNumber.substring(4);
+        }
+        if (cleanNumber.startsWith('255')) {
+            cleanNumber = '0' + cleanNumber.substring(3);
+        }
+        
+        var resultDiv = document.getElementById('scamResult');
+        resultDiv.style.display = 'block';
+        resultDiv.style.padding = '12px 16px';
+        resultDiv.style.borderRadius = '8px';
+        resultDiv.style.marginTop = '10px';
+        
+        if (scamNumbers.includes(cleanNumber)) {
+            resultDiv.innerHTML = '🚨 ONYO! Namba hii imeripotiwa kwa ulaghai! Usitume pesa kwa namba hii.';
+            resultDiv.style.background = '#fee2e2';
+            resultDiv.style.border = '1px solid #dc2626';
+            resultDiv.style.color = '#991b1b';
+        } else {
+            resultDiv.innerHTML = '✅ Namba hii haijaripotiwa. Inaonekana salama.';
+            resultDiv.style.background = '#dcfce7';
+            resultDiv.style.border = '1px solid #16a34a';
+            resultDiv.style.color = '#166534';
+        }
+    }
+    
+    function toggleReportForm() {
+        var form = document.getElementById('reportForm');
+        if (form.style.display === 'block') {
+            form.style.display = 'none';
+        } else {
+            form.style.display = 'block';
+        }
+    }
+    
+    // ====== ANGALIA NAMBA (KUTOKA LOCALSTORAGE) ======
+function checkScamNumber() {
+    var input = document.getElementById('scamCheckInput');
+    var number = input.value.trim();
+    
+    if (!number) {
+        alert('Tafadhali weka namba ya simu.');
+        return;
+    }
+    
+    // Pata orodha kutoka localStorage
+    var scamNumbers = getScamNumbers();
+    
+    // Safisha namba (ondoa +255 au 255)
+    var cleanNumber = number;
+    if (cleanNumber.startsWith('+255')) {
+        cleanNumber = '0' + cleanNumber.substring(4);
+    }
+    if (cleanNumber.startsWith('255')) {
+        cleanNumber = '0' + cleanNumber.substring(3);
+    }
+    
+    // onyesha matokeo
+    var resultDiv = document.getElementById('scamResult');
+    resultDiv.style.display = 'block';
+    resultDiv.style.padding = '12px 16px';
+    resultDiv.style.borderRadius = '8px';
+    resultDiv.style.marginTop = '10px';
+    
+    if (scamNumbers.includes(cleanNumber)) {
+        resultDiv.innerHTML = '🚨 ONYO! Namba hii imeripotiwa kwa ulaghai! Usitume pesa kwa namba hii.';
+        resultDiv.style.background = '#fee2e2';
+        resultDiv.style.border = '1px solid #dc2626';
+        resultDiv.style.color = '#991b1b';
+    } else {
+        resultDiv.innerHTML = '✅ Namba hii haijaripotiwa. Inaonekana salama.';
+        resultDiv.style.background = '#dcfce7';
+        resultDiv.style.border = '1px solid #16a34a';
+        resultDiv.style.color = '#166534';
+    }
+}
+// sasisha scam count display
+updateScamCount();
+// ====== KAZI ZA LOCALSTORAGE ======
+
+// Pata orodha ya namba za ulaghai kutoka localStorage
+function getScamNumbers() {
+    var saved = localStorage.getItem('scamNumbers');
+    if (saved) {
+        return JSON.parse(saved);
+    }
+    // Orodha ya msingi (default)
+    return ['0712345678', '0755123456', '0688123456', '0788123456', '0765123456'];
+}
+//update scam count 
+function updateScamCount() {
+    var count = getScamNumbers().length;
+    var display = document.getElementById('scamCountDisplay');
+    if (display) {
+        display.textContent = count;
+    }
+    console.log('📊 Scam Count:', count);
+}
+// Hifadhi namba mpya kwenye localStorage
+function saveScamNumber(number) {
+    var list = getScamNumbers();
+    if (!list.includes(number)) {
+        list.push(number);
+        localStorage.setItem('scamNumbers', JSON.stringify(list));
+        return true;
+    }
+    return false;
+}
+
+// ====== FUNGA / FUNGA FOMU ======
+function toggleReportForm() {
+    var form = document.getElementById('reportForm');
+    if (form.style.display === 'block') {
+        form.style.display = 'none';
+    } else {
+        form.style.display = 'block';
+    }
+}
+
+// ====== TUMA RIPOTI (HIFADHI KWENYE LOCALSTORAGE) ======
+function submitReport() {
+    var number = document.getElementById('reportNumber').value.trim();
+    var reason = document.getElementById('reportReason').value.trim();
+    
+    if (number.length < 10 || !number.startsWith('0')) {
+        alert('⚠️ Tafadhali weka namba sahihi ya simu (mfano: 0712345678)');
+        return;
+    }
+    
+    if (reason.length < 5) {
+        alert('⚠️ Tafadhali eleza kwa nini unaripoti namba hii.');
+        return;
+    }
+    
+    // Hifadhi namba kwenye localStorage
+    var saved = saveScamNumber(number);
+    
+    if (saved) {
+        alert('✅ Asante! Namba ' + number + ' imehifadhiwa kwenye orodha ya ulaghai.');
+    } else {
+        alert('⚠️ Namba ' + number + ' tayari ipo kwenye orodha.');
+    }
+    
+    document.getElementById('reportNumber').value = '';
+    document.getElementById('reportReason').value = '';
+    document.getElementById('reportForm').style.display = 'none';
+}
+
+// ====== WEKA ORODHA YA MSINGI (MARA YA KWANZA) ======
+function initializeScamNumbers() {
+    var saved = localStorage.getItem('scamNumbers');
+    if (!saved) {
+        // Hakuna data, weka orodha ya msingi
+        var defaultNumbers = ['0712345678', '0755123456', '0688123456', '0788123456', '0765123456'];
+        localStorage.setItem('scamNumbers', JSON.stringify(defaultNumbers));
+        console.log('✅ Orodha ya msingi imewekwa!');
+    }
+}
+
+// ====== ANZA APP ======
+initializeScamNumbers();
+
+</script>
+
+<!-- ========================================== -->
+<!-- SEHEMU YA TOLEO LA PRO                   -->
+<!-- ========================================== -->
+<div id="proSection" class="pro-section" style="background:linear-gradient(135deg, #1a2a3a, #2563eb);border-radius:14px;padding:25px;margin-top:20px;border:2px solid #f59e0b;text-align:center;color:white;">
+    <div style="display:inline-block;background:#f59e0b;color:#1a2a3a;padding:4px 16px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:10px;">
+        ⭐ PRO
+    </div>
+    <h3 style="margin-bottom:8px;font-size:22px;">Pata Toleo la Pro</h3>
+    <p style="font-size:14px;margin-bottom:12px;opacity:0.9;">
+        Fungua vipengele vyote na usaidie kukuza app!
+    </p>
+    
+    <!-- Linganisha Bure vs Pro -->
+    <div class="pro-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#1e293b;border-radius:8px;overflow:hidden;margin-bottom:15px;font-size:13px;">
+        <div style="background:#0f172a;padding:10px;font-weight:700;color:#94a3b8;">Bure</div>
+        <div style="background:#1e293b;padding:10px;font-weight:700;color:#f59e0b;">Pro</div>
+        
+        <div style="background:#0f172a;padding:8px 10px;text-align:left;">📊 Makato</div>
+        <div style="background:#1e293b;padding:8px 10px;text-align:left;">✅ Makato</div>
+        
+        <div style="background:#0f172a;padding:8px 10px;text-align:left;">🛡️ Usalama</div>
+        <div style="background:#1e293b;padding:8px 10px;text-align:left;">✅ Usalama</div>
+        
+        <div style="background:#0f172a;padding:8px 10px;text-align:left;">💰 Mkopo</div>
+        <div style="background:#1e293b;padding:8px 10px;text-align:left;">✅ Mkopo</div>
+        
+        <div style="background:#0f172a;padding:8px 10px;text-align:left;color:#64748b;">📝 Historia</div>
+        <div style="background:#1e293b;padding:8px 10px;text-align:left;">✅ Historia</div>
+        
+        <div style="background:#0f172a;padding:8px 10px;text-align:left;color:#64748b;">📌 Akiba</div>
+        <div style="background:#1e293b;padding:8px 10px;text-align:left;">✅ Akiba</div>
+        
+        <div style="background:#0f172a;padding:8px 10px;text-align:left;color:#64748b;">🚫 Matangazo</div>
+        <div style="background:#1e293b;padding:8px 10px;text-align:left;">✅ Hakuna</div>
+    </div>
+    
+    <!-- Kitufe cha Pro - KINAFANYA KAZI SASA -->
+    <button onclick="upgradeToProWithPayment()" 
+            id="proBtn"
+            style="padding:12px 30px;background:#f59e0b;color:#1a2a3a;border:none;border-radius:8px;font-weight:700;font-size:16px;cursor:pointer;">
+        💳 Pata Pro - TZS 5,000/mwezi
+    </button>
+    <p style="font-size:11px;opacity:0.7;margin-top:8px;">
+        Malipo kupitia M-Pesa, Tigo Pesa, au Airtel Money
+    </p>
+</div>
+
+<!-- ========================================== -->
+<!-- SEHEMU YA HAKIMILIKI NA MASHARTI         -->
+<!-- ========================================== -->
+<div class="footer-panel" style="margin-top:30px;padding-top:20px;border-top:2px solid #e2e8f0;font-size:12px;color:#64748b;text-align:center;">
+    <div style="margin-bottom:15px;">
+        <p>
+            &copy; <span id="year"></span> <strong>Waisahi Tech</strong> |
+            Kikotoo cha Makato Tanzania v1.0
+        </p>
+        <p style="font-size:11px;color:#94a3b8;">
+            Haki zote zimehifadhiwa. Taarifa zote ni za marejeleo tu.
+        </p>
+    </div>
+    
+    <!-- GRIDI - SASA INA CLASS "grid-2col" -->
+    <div class="grid-2col">
+        <a href="#" onclick="alert('Masharti yanakuja hivi karibuni.'); return false;" 
+           style="color:#2563eb;text-decoration:underline;cursor:pointer;">
+            Masharti ya Matumizi
+        </a>
+        <a href="#" onclick="alert('Sera ya faragha inakuja hivi karibuni.'); return false;" 
+           style="color:#2563eb;text-decoration:underline;cursor:pointer;">
+            Sera ya Faragha
+        </a>
+    </div>
+    
+    <div style="text-align:center;margin-top:12px;font-size:10px;color:#cbd5e1;">
+        App hii haijaidhinishwa au kuhusishwa na M-Pesa, Tigo Pesa, Airtel Money, au AzamPay.
+        <br>Viwango vya makato vinaweza kubadilika. Thibitisha na mtoa huduma husika.
+    </div>
+</div>
+
+
+<!-- ========================================== -->
+<!-- KITUFE CHA KUSHIRIKI APP                  -->
+<!-- ========================================== -->
+<div class="share-wrap" style="text-align:center;margin:15px 0 10px 0;">
+    <button onclick="shareApp()" 
+            style="background:#2563eb;color:white;border:none;border-radius:30px;padding:12px 25px;font-size:16px;font-weight:bold;cursor:pointer;box-shadow:0 4px 8px rgba(0,0,0,0.2);display:inline-flex;align-items:center;gap:8px;">
+        <span style="font-size:20px;">📤</span> Shiriki App
+    </button>
+</div>
+<!-- ========================================== -->
+<!-- MSIMBO WA TOLEO LA PRO (KWA MKONO)        -->
+<!-- ========================================== -->
+<script>
+    // ====== ANGALIA KAMA MTUMIAJI NI PRO ======
+    function isProUser() {
+        return localStorage.getItem('isPro') === 'true';
+    }
+    
+    // ====== WEKA MTUMIAJI KUWA PRO ======
+    function setProUser() {
+        localStorage.setItem('isPro', 'true');
+        alert('✅ Hongera! Sasa wewe ni mtumiaji wa Pro!');
+        location.reload();
+    }
+    
+    // ====== ONDOA PRO (KWA MAJARIBIO) ======
+    function removeProUser() {
+        localStorage.removeItem('isPro');
+        alert('Toleo la Pro limeondolewa.');
+        location.reload();
+    }
+    
+    // ====== KAZI YA KUPANDA PRO ======
+    function upgradeToPro() {
+        // Angalia kama tayari ni Pro
+        if (isProUser()) {
+            alert('✅ Tayari wewe ni mtumiaji wa Pro!');
+            return;
+        }
+        
+        // Onyesha maelezo ya malipo
+        var confirmPayment = confirm(
+            '💳 Unataka kupata Toleo la Pro?\n\n' +
+            'Gharama: TZS 5,000 kwa mwezi\n' +
+            'Malipo: M-Pesa, Tigo Pesa, au Airtel Money\n\n' +
+            '⚠️ Kwa sasa, hii ni onyesho. Malipo halisi yataunganishwa baadae.\n\n' +
+            'Bonyeza "Sawa" kuwezesha Pro kwa majaribio.'
+        );
+        
+        if (confirmPayment) {
+            setProUser();
+        }
+    }
+    
+    // ====== SASISHA UI KULINGANA NA HALI YA PRO ======
+    function updateProUI() {
+        var proBtn = document.getElementById('proBtn');
+        var proSection = document.getElementById('proSection');
+        
+        if (isProUser()) {
+            if (proBtn) {
+                proBtn.textContent = '✅ Tayari wewe ni Pro!';
+                proBtn.style.background = '#16a34a';
+                proBtn.style.cursor = 'default';
+            }
+            if (proSection) {
+                proSection.style.borderColor = '#16a34a';
+            }
+        } else {
+            if (proBtn) {
+                proBtn.textContent = '💳 Pata Pro - TZS 5,000/mwezi';
+                proBtn.style.background = '#f59e0b';
+                proBtn.style.cursor = 'pointer';
+            }
+            if (proSection) {
+                proSection.style.borderColor = '#f59e0b';
+            }
+        }
+    }
+    
+    // ====== ANZA APP ======
+    updateProUI();
+    // ============================================================
+// AZAMPAY - KUUNGANISHA MALIPO
+// ============================================================
+
+// Sifa zako za AzamPay (HIFADHI SALAMA!)
+const AZAMPAY_CONFIG = {
+    clientId: '',
+    clientSecret: '',
+    appName: 'Kikotoo cha makato',
+    environment: 'sandbox' // Badilisha kuwa 'production' baadae
+};
+
+// Kazi ya kutuma ombi la malipo
+function requestPayment(amount, phoneNumber, externalId) {
+    // Hii ni mfano wa ombi kwa AzamPay API
+    // Kwa sasa, inaonyesha tu maelezo (simulation)
+    
+    console.log('💰 Ombi la malipo limepelekwa!');
+    console.log('Kiasi: TZS ' + amount);
+    console.log('Namba: ' + phoneNumber);
+    console.log('Kitambulisho: ' + externalId);
+    
+    // Hapa ndipo utatuma ombi halisi kwa API ya AzamPay
+    // Utahitaji backend server ili kuhifadhi sifa zako salama
+    
+    return new Promise(function(resolve, reject) {
+        // Simulation ya jibu kutoka AzamPay
+        setTimeout(function() {
+            var success = Math.random() > 0.2; // 80% success rate
+            if (success) {
+                resolve({
+                    success: true,
+                    transactionId: 'TXN-' + Date.now(),
+                    message: 'Malipo yamekamilika!'
+                });
+            } else {
+                reject({
+                    success: false,
+                    message: 'Malipo yameshindikana. Jaribu tena.'
+                });
+            }
+        }, 2000);
+    });
+}
+
+// ====== KAZI YA KUPANDA PRO KUPITIA AZAMPAY ======
+function upgradeToProWithPayment() {
+    // Angalia kama tayari ni Pro
+    if (isProUser()) {
+        alert('✅ Tayari wewe ni mtumiaji wa Pro!');
+        return;
+    }
+    
+    // Omba namba ya simu kwa malipo
+    var phoneNumber = prompt('💳 Ingiza namba yako ya simu kwa malipo:\n(Mfano: 0712345678)');
+    
+    if (!phoneNumber) {
+        alert('Malipo yameghairiwa.');
+        return;
+    }
+    
+    // Safisha namba
+    var cleanNumber = phoneNumber.trim();
+    if (cleanNumber.startsWith('0')) {
+        cleanNumber = '255' + cleanNumber.substring(1);
+    }
+    if (cleanNumber.startsWith('+')) {
+        cleanNumber = cleanNumber.substring(1);
+    }
+    
+    // Thibitisha kiasi
+    var confirmPayment = confirm(
+        '💳 Unathibitisha malipo ya TZS 5,000?\n\n' +
+        'Namba ya simu: ' + phoneNumber + '\n' +
+        'Kiasi: TZS 5,000\n' +
+        'Huduma: Toleo la Pro (mwezi 1)\n\n' +
+        '⚠️ Hii ni majaribio (Sandbox). Hakuna pesa halisi inakatwa.'
+    );
+    
+    if (!confirmPayment) {
+        alert('Malipo yameghairiwa.');
+        return;
+    }
+    
+    // Tuma ombi la malipo
+    alert('⏳ Inasindika malipo... Tafadhali subiri.');
+    
+    requestPayment(5000, cleanNumber, 'PRO-' + Date.now())
+        .then(function(result) {
+            alert('✅ ' + result.message + '\n\n' +
+                  'Kitambulisho: ' + result.transactionId + '\n' +
+                  'Hongera! Sasa wewe ni mtumiaji wa Pro!');
+            setProUser();
+        })
+        .catch(function(error) {
+            alert('❌ ' + error.message + '\n\n' +
+                  'Tafadhali jaribu tena au wasiliana nasi.');
+        });
+}
+
+// ============================================================
+// KUSHIRIKI APP
+// ============================================================
+function shareApp() {
+    // URL ya app yako (badilisha na yako)
+    const appUrl = 'https://fee-calculator-v2-5.vercel.app/';
+    const shareText = '📊 Kikotoo cha Makato Tanzania!\nLinganisha makato, angalia usalama wa namba, na hesabu mkopo.\n\nPakua sasa: ' + appUrl;
+
+    if (navigator.share) {
+        // Kwa simu (Web Share API)
+        navigator.share({
+            title: 'Kikotoo cha Makato Tanzania',
+            text: shareText,
+            url: appUrl
+        })
+        .then(() => console.log('✅ Imeshirikiwa!'))
+        .catch((error) => console.log('❌ Kushiriki kughairiwa:', error));
+    } else {
+        // Kwa desktop - nakili kiungo
+        navigator.clipboard.writeText(shareText).then(() => {
+            alert('✅ Kiungo kimenakiliwa! Shiriki na marafiki zako.');
+        }).catch(() => {
+            alert('❌ Tafadhali nakili URL hii: ' + appUrl);
+        });
+    }
+}
+
+</script>
+    </div>
+</body>
+</html>
+
+
+

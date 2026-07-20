@@ -1,0 +1,21 @@
+{
+  "name": "Kikokotoo cha Makato Tanzania",
+  "short_name": "Makato",
+  "description": "Kikokotoo cha kulinganisha makato ya huduma za malipo Tanzania kwa matumizi ya simu ya mkononi.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "portrait",
+  "background_color": "#f0f4f8",
+  "theme_color": "#2563eb",
+  "lang": "sw",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jinsi ya Kutambua na Kuepuka Ulaghai wa Fedha za Simu</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #f0f4f8;
+            padding: 15px;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1a2a3a;
+            border-bottom: 2px solid #dc2626;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #1a2a3a;
+            margin-top: 20px;
+        }
+        h3 {
+            color: #1a2a3a;
+            margin-top: 15px;
+        }
+        p {
+            color: #4a5a6a;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        ul, ol {
+            color: #4a5a6a;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+        .back-btn:hover {
+            background: #1d4ed8;
+        }
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid #dc2626;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .tip-box {
+            background: #dcfce7;
+            border-left: 4px solid #16a34a;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        th, td {
+            border: 1px solid #dce4ec;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background: #dc2626;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛡️ Jinsi ya Kutambua na Kuepuka Ulaghai wa Fedha za Simu</h1>
+        <p><strong>Tarehe:</strong> <span id="date"></span></p>
+
+        <h2>Utangulizi</h2>
+        <p>Ulaghai wa fedha za simu umeongezeka sana nchini Tanzania. Kila siku, Watanzania wengi wanapoteza fedha zao kwa sababu ya walaghai wanaojifanya kuwa wawakilishi wa kampuni za simu, benki, au hata marafiki. Tatizo kubwa ni kwamba <strong>watu wengi hawajui ishara za ulaghai</strong> na wanapotwaa ujanja.</p>
+
+        <div class="warning-box">
+            <strong>⚠️ Onyo:</strong> Walaghai wanatumia mbinu mbalimbali kukupora fedha zako. Kuwa makini na usiwahi kutoa taarifa zako za siri kwa mtu yeyote.
+        </div>
+
+        <h2>Aina za Ulaghai wa Fedha za Simu</h2>
+
+        <h3>1. Ulaghai wa "Wawakilishi wa Kampuni"</h3>
+        <p>Walaghai wanapiga simu wakijifanya kuwa wawakilishi wa M-Pesa, Tigo Pesa, au Airtel Money. Wanakwambia kwamba kuna tatizo na akaunti yako na wanahitaji <strong>PIN yako</strong> au <strong>namba ya simu</strong> ili "kurekebisha".</p>
+        <p><strong>Jinsi ya Kujikinga:</strong> Kampuni za simu <strong>haziwahi kuuliza PIN</strong> yako kupitia simu. Usiwahi kutoa taarifa zako za siri.</p>
+
+        <h3>2. Ulaghai wa "Ushindi wa Pesa"</h3>
+        <p>Unapokea ujumbe unaosema umeshinda pesa (kwa mfano, TZS 5,000,000). Wanakuomba utume "ada ya usajili" au "ada ya kodi" ili upate ushindi wako.</p>
+        <p><strong>Jinsi ya Kujikinga:</strong> Hakuna shindano halisi linalokuomba utume pesa ili upate ushindi. Hii ni njia ya walaghai kukupora fedha.</p>
+
+        <h3>3. Ulaghai wa "Namba za Simu Zinazofanana"</h3>
+        <p>Walaghai hutumia namba za simu zinazofanana na zile za marafiki au familia yako. Wanakutumia ujumbe wakiomba usaidizi wa fedha kwa sababu ya dharura.</p>
+        <p><strong>Jinsi ya Kujikinga:</strong> Kabla ya kutuma pesa, <strong>piga simu</strong> kwa mtu huyo kwanza ili kuthibitisha kuwa ni yeye.</p>
+
+        <h3>4. Ulaghai wa "Viungo vya Ulaghai"</h3>
+        <p>Unapokea ujumbe wenye kiungo (link) kinachoonekana kuwa cha kampuni ya simu au benki. Unapobonyeza kiungo, unaombwa kuingiza namba yako na PIN.</p>
+        <p><strong>Jinsi ya Kujikinga:</strong> Usibonyeze viungo kutoka kwa watu usiowajua. Kampuni za simu <strong>hazitumi viungo</strong> kuuliza taarifa zako.</p>
+
+        <h2>Jedwali la Ishara za Ulaghai</h2>
+        <table>
+            <tr>
+                <th>Ishara</th>
+                <th>Maelezo</th>
+                <th>Jinsi ya Kujikinga</th>
+            </tr>
+            <tr>
+                <td>Ujumbe wa ushindi</td>
+                <td>Unasema umeshinda pesa bila kushiriki</td>
+                <td>Puuza ujumbe huo</td>
+            </tr>
+            <tr>
+                <td>Kuuliza PIN</td>
+                <td>Mtu anauliza PIN yako ya simu</td>
+                <td>Usiwahi kutoa</td>
+            </tr>
+            <tr>
+                <td>Namba isiyojulikana</td>
+                <td>Simu kutoka namba usiyoijua</td>
+                <td>Usijibu au wasiliana na kampuni</td>
+            </tr>
+            <tr>
+                <td>Kiungo cha tuhuma</td>
+                <td>Ujumbe wenye kiungo cha ajabu</td>
+                <td>Usibonyeze kiungo</td>
+            </tr>
+        </table>
+
+        <h2>Jinsi ya Kujikinga na Ulaghai</h2>
+
+        <div class="tip-box">
+            <strong>💡 Kidokezo:</strong> Kumbuka kanuni hii rahisi: <strong>"Hakuna mtu anayeweza kuuliza PIN yako"</strong>. Ikiwa mtu anauliza PIN, ni ulaghai!
+        </div>
+
+        <h3>1. Usiwahi Kutoa PIN Yako</h3>
+        <p>PIN yako ni kama siri yako. Hakuna mtu au kampuni inayostahili kuiuliza. M-Pesa, Tigo Pesa, na Airtel Money <strong>hawatawahi kuuliza PIN</strong> yako kupitia simu, SMS, au barua pepe.</p>
+
+        <h3>2. Thibitisha Kabla ya Kutuma Pesa</h3>
+        <p>Kabla ya kutuma pesa kwa mtu, <strong>piga simu</strong> kwa mtu huyo kwanza ili kuthibitisha kuwa ni yeye anayeomba. Usitegemee ujumbe tu.</p>
+
+        <h3>3. Angalia Namba ya Simu</h3>
+        <p>Kabla ya kutuma pesa, <strong>angalia namba ya simu</strong> kwenye app ya Kikokotoo cha Makato. App yetu ina orodha ya namba zilizoripotiwa kwa ulaghai.</p>
+
+        <h3>4. Ripoti Ulaghai</h3>
+        <p>Ukikutana na ulaghai, <strong>ripoti</strong> kwa kampuni ya simu au polisi. Unaweza pia kuongeza namba kwenye orodha ya ulaghai kupitia app yetu.</p>
+
+        <h3>5. Elimisha Wengine</h3>
+        <p>Shiriki taarifa hii na marafiki na familia yako. Watu wengi wanapotwaa kwa sababu hawajui ishara za ulaghai.</p>
+
+        <h2>Nini Cha Kufanya Ukiwa Mwathirika</h2>
+        <ol>
+            <li><strong>Usiogope</strong> - Kuna hatua za kuchukua.</li>
+            <li><strong>Wasiliana na kampuni yako ya simu</strong> - M-Pesa (*150*00#), Tigo Pesa (*150*01#), Airtel Money (150).</li>
+            <li><strong>Ripoti polisi</strong> - Nenda kwenye kituo cha polisi kilicho karibu nawe.</li>
+            <li><strong>Ripoti kwenye app yetu</strong> - Ongeza namba ya ulaghai kwenye orodha yetu ili kuwasaidia wengine.</li>
+        </ol>
+
+        <div class="warning-box">
+            <strong>⚠️ Kumbuka:</strong> Kamwe usipe mtu yeyote PIN yako, namba ya simu, au taarifa zingine za siri. Kampuni za simu hazitakuja kwako kuuliza taarifa hizo.
+        </div>
+
+        <h2>Hitimisho</h2>
+        <p>Ulaghai wa fedha za simu unaweza kukuzuia kwa <strong>kujua ishara zake</strong> na <strong>kuwa makini</strong>. Kila mwezi, Watanzania wengi wanapoteza fedha zao kwa sababu ya walaghai. Usiwe mmoja wao. Tumia app ya <strong>Kikokotoo cha Makato</strong> kuangalia usalama wa namba za simu na kulinda fedha zako.</p>
+
+        <a href="index.html" class="back-btn">⬅ Rudi kwenye App</a>
+    </div>
+
+    <script>
+        document.getElementById('date').textContent = new Date().toLocaleDateString('sw-TZ', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    </script>
+</body>
+</html>

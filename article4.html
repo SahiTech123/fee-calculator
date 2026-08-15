@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tofauti ya Ada za Kutuma na Kutoa Pesa Tanzania</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #f0f4f8;
+            padding: 15px;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1a2a3a;
+            border-bottom: 2px solid #8b5cf6;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #1a2a3a;
+            margin-top: 20px;
+        }
+        h3 {
+            color: #1a2a3a;
+            margin-top: 15px;
+        }
+        p {
+            color: #4a5a6a;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        ul, ol {
+            color: #4a5a6a;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+        .back-btn:hover {
+            background: #1d4ed8;
+        }
+        .tip-box {
+            background: #ede9fe;
+            border-left: 4px solid #8b5cf6;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .success-box {
+            background: #dcfce7;
+            border-left: 4px solid #16a34a;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid #dc2626;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        th, td {
+            border: 1px solid #dce4ec;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background: #8b5cf6;
+            color: white;
+        }
+        .highlight {
+            background: #dcfce7;
+            font-weight: bold;
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .comparison div {
+            padding: 15px;
+            border-radius: 8px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+        .comparison .send {
+            border-left: 4px solid #2563eb;
+        }
+        .comparison .withdraw {
+            border-left: 4px solid #dc2626;
+        }
+        @media (max-width: 600px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Tofauti ya Ada za Kutuma na Kutoa Pesa Tanzania</h1>
+        <p><strong>Tarehe:</strong> <span id="date"></span></p>
+
+        <h2>Utangulizi</h2>
+        <p>Watanzania wengi hawajui kwamba <strong>kutuma pesa na kutoa pesa kuna makato tofauti</strong>. Wengi wanafikiri makato ni sawa, lakini ukweli ni kwamba <strong>kutoa pesa ni ghali zaidi kuliko kutuma</strong>.</p>
+
+        <p>Katika makala hii, tutakuonyesha tofauti kati ya ada za kutuma na kutoa pesa kwa watoa huduma wakuu nchini Tanzania. Hii itakusaidia <strong>kuokoa pesa</strong> kwa kuchagua njia sahihi ya miamala yako.</p>
+
+        <div class="tip-box">
+            <strong>💡 Kidokezo:</strong> Ikiwa unaweza, epuka kutoa pesa kwa wakala. Badala yake, tumia pesa zako kwa miamala ya simu au benki ili kuokoa makato.
+        </div>
+
+        <h2>Tofauti Kubwa Kati ya Kutuma na Kutoa</h2>
+
+        <div class="comparison">
+            <div class="send">
+                <h3 style="color:#2563eb;margin-top:0;">📤 Kutuma Pesa</h3>
+                <p><strong>Makato:</strong> Kwa kawaida ni <strong>asilimia ndogo</strong> ya kiasi unachotuma.</p>
+                <p><strong>Mfano:</strong> Kutuma TZS 100,000 kwa M-Pesa ni TZS 350 tu.</p>
+                <p><strong>Faida:</strong> Makato ni ya chini na yanaonekana wazi.</p>
+            </div>
+            <div class="withdraw">
+                <h3 style="color:#dc2626;margin-top:0;">🏧 Kutoa Pesa</h3>
+                <p><strong>Makato:</strong> Kwa kawaida ni <strong>ghali zaidi</strong> kwa sababu unatoa pesa taslimu.</p>
+                <p><strong>Mfano:</strong> Kutoa TZS 100,000 kwa M-Pesa ni TZS 2,800.</p>
+                <p><strong>Hasara:</strong> Makato ni makubwa na yanaweza kuwa hadi 3% ya kiasi.</p>
+            </div>
+        </div>
+
+        <h2>Jedwali la Kulinganisha (Kiasi cha TZS 100,000)</h2>
+        <table>
+            <tr>
+                <th>Mtoa Huduma</th>
+                <th>Kutuma (Send)</th>
+                <th>Kutoa (Withdraw)</th>
+                <th>Tofauti</th>
+            </tr>
+            <tr>
+                <td>M-Pesa</td>
+                <td>TZS 350</td>
+                <td>TZS 2,800</td>
+                <td class="highlight">TZS 2,450</td>
+            </tr>
+            <tr>
+                <td>Tigo Pesa</td>
+                <td>TZS 350</td>
+                <td>TZS 2,800</td>
+                <td class="highlight">TZS 2,450</td>
+            </tr>
+            <tr>
+                <td>Airtel Money</td>
+                <td>TZS 200</td>
+                <td>TZS 1,200</td>
+                <td class="highlight">TZS 1,000</td>
+            </tr>
+            <tr>
+                <td>AzamPesa</td>
+                <td>TZS 1,000</td>
+                <td>TZS 1,000</td>
+                <td>TZS 0</td>
+            </tr>
+            <tr>
+                <td>Selcom Pesa</td>
+                <td>TZS 1,900</td>
+                <td>TZS 1,900</td>
+                <td>TZS 0</td>
+            </tr>
+        </table>
+
+        <div class="warning-box">
+            <strong>⚠️ Taarifa:</strong> Kwa M-Pesa na Tigo Pesa, kutoa TZS 100,000 ni ghali zaidi kwa <strong>TZS 2,450</strong> kuliko kutuma. Hii ni tofauti kubwa!
+        </div>
+
+        <h2>Kwanini Kutoa Pesa Ni Ghali Zaidi?</h2>
+
+        <ul>
+            <li><strong>Gharama za Wakala:</strong> Wauza huduma (wakala) wanatoza ada kwa huduma yao.</li>
+            <li><strong>Ushuru wa Serikali:</strong> Kuna ushuru maalum unaotozwa kwa uondoaji wa fedha taslimu.</li>
+            <li><strong>Gharama za Usafirishaji wa Fedha:</strong> Kampuni za simu zinagharimia usafirishaji wa fedha taslimu kwa wakala.</li>
+        </ul>
+
+        <h2>Jinsi ya Kuokoa Pesa</h2>
+
+        <h3>1. Epuka Kutoa Pesa Isipokuwa Lazima</h3>
+        <p>Ikiwa unaweza, <strong>epuka kutoa pesa</strong> kwa wakala. Badala yake, tumia pesa zako kwa miamala ya simu au kulipa bidhaa moja kwa moja.</p>
+
+        <h3>2. Tumia Benki au Wakala wa Benki</h3>
+        <p>Kutoa pesa kupitia benki au wakala wa benki (kwa mfano, NMB, CRDB) kunaweza kuwa <strong>nafuu zaidi</strong> kuliko wakala wa simu.</p>
+
+        <h3>3. Linganisha Kabla ya Kutoa</h3>
+        <p>Kama lazima utoe pesa, <strong>linganisha makato</strong> ya watoa huduma tofauti. Kwa mfano:</p>
+        <ul>
+            <li>Kwa kiasi cha TZS 100,000, AzamPesa ina makato ya TZS 1,000 tu.</li>
+            <li>Kwa kiasi cha TZS 100,000, Selcom Pesa ina makato ya TZS 1,900 tu.</li>
+        </ul>
+
+        <h3>4. Gawanya Kiasi Kikubwa</h3>
+        <p>Kama tulivyoona kwenye makala ya kwanza, kugawanya kiasi kikubwa katika sehemu ndogo kunaweza <strong>kupunguza makato</strong>.</p>
+
+        <div class="success-box">
+            <strong>📊 Mfano:</strong> Kutoa TZS 300,000 mara moja ni TZS 4,500. Lakini ukigawanya kuwa TZS 150,000 + TZS 150,000, makato ni TZS 3,150. <strong>Unaokoa TZS 1,350!</strong>
+        </div>
+
+        <h3>5. Tumia Kikotoo cha Makato</h3>
+        <p>App yetu ya <strong>Kikokotoo cha Makato</strong> inakusaidia kulinganisha makato ya kutuma na kutoa pesa kwa watoa huduma wote. Unaweza kuona makato <strong>kabla</strong> ya kufanya miamala yako.</p>
+
+        <h2>Jedwali la Kulinganisha (Kiasi cha TZS 300,000)</h2>
+        <table>
+            <tr>
+                <th>Mtoa Huduma</th>
+                <th>Kutuma (Send)</th>
+                <th>Kutoa (Withdraw)</th>
+                <th>Tofauti</th>
+            </tr>
+            <tr>
+                <td>M-Pesa</td>
+                <td>TZS 850</td>
+                <td>TZS 4,500</td>
+                <td class="highlight">TZS 3,650</td>
+            </tr>
+            <tr>
+                <td>Tigo Pesa</td>
+                <td>TZS 850</td>
+                <td>TZS 4,500</td>
+                <td class="highlight">TZS 3,650</td>
+            </tr>
+            <tr>
+                <td>Airtel Money</td>
+                <td>TZS 1,200</td>
+                <td>TZS 4,500</td>
+                <td class="highlight">TZS 3,300</td>
+            </tr>
+            <tr>
+                <td>AzamPesa</td>
+                <td>TZS 1,900</td>
+                <td>TZS 1,900</td>
+                <td>TZS 0</td>
+            </tr>
+            <tr>
+                <td>Selcom Pesa</td>
+                <td>TZS 1,900</td>
+                <td>TZS 1,900</td>
+                <td>TZS 0</td>
+            </tr>
+        </table>
+
+        <h2>Hitimisho</h2>
+        <p>Kutuma na kutoa pesa ni miamala tofauti yenye <strong>makato tofauti</strong>. Kwa kawaida, <strong>kutoa pesa ni ghali zaidi</strong> kuliko kutuma.</p>
+
+        <div class="tip-box">
+            <strong>💡 Kumbuka:</strong> Kabla ya kufanya miamala yako, <strong>linganisha makato</strong> na uchague njia nafuu zaidi. Tumia <strong>Kikokotoo cha Makato</strong> kuhesabu makato kabla ya kutuma au kutoa pesa.
+        </div>
+
+        <a href="index.html" class="back-btn">⬅ Rudi kwenye App</a>
+    </div>
+
+    <script>
+        document.getElementById('date').textContent = new Date().toLocaleDateString('sw-TZ', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Difference Between Sending and Withdrawing Money Fees</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #f0f4f8;
+            padding: 15px;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1a2a3a;
+            border-bottom: 2px solid #8b5cf6;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #1a2a3a;
+            margin-top: 20px;
+        }
+        h3 {
+            color: #1a2a3a;
+            margin-top: 15px;
+        }
+        p {
+            color: #4a5a6a;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        ul, ol {
+            color: #4a5a6a;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+        .back-btn:hover {
+            background: #1d4ed8;
+        }
+        .tip-box {
+            background: #ede9fe;
+            border-left: 4px solid #8b5cf6;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid #dc2626;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #dce4ec;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background: #8b5cf6;
+            color: white;
+        }
+        .highlight {
+            background: #dcfce7;
+            font-weight: bold;
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .comparison div {
+            padding: 15px;
+            border-radius: 8px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+        .comparison .send {
+            border-left: 4px solid #2563eb;
+        }
+        .comparison .withdraw {
+            border-left: 4px solid #dc2626;
+        }
+        @media (max-width: 600px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 The Difference Between Sending and Withdrawing Money Fees</h1>
+        <p><strong>Date:</strong> <span id="date"></span></p>
+
+        <h2>Introduction</h2>
+        <p>Many Tanzanians don't realize that <strong>sending money and withdrawing money have different fees</strong>. Most people think the fees are the same, but the truth is that <strong>withdrawing money is more expensive than sending</strong>.</p>
+
+        <p>In this article, we'll show you the difference between sending and withdrawal fees for the major mobile money providers in Tanzania. This will help you <strong>save money</strong> by choosing the right transaction method.</p>
+
+        <div class="tip-box">
+            <strong>💡 Tip:</strong> If possible, avoid withdrawing cash from agents. Instead, use your money for mobile transactions or bank payments to save on fees.
+        </div>
+
+        <h2>Key Difference Between Sending and Withdrawing</h2>
+
+        <div class="comparison">
+            <div class="send">
+                <h3 style="color:#2563eb;margin-top:0;">📤 Sending Money</h3>
+                <p><strong>Fee:</strong> Usually a <strong>small percentage</strong> of the amount you send.</p>
+                <p><strong>Example:</strong> Sending TZS 100,000 with M-Pesa costs only TZS 350.</p>
+                <p><strong>Advantage:</strong> Fees are low and transparent.</p>
+            </div>
+            <div class="withdraw">
+                <h3 style="color:#dc2626;margin-top:0;">🏧 Withdrawing Money</h3>
+                <p><strong>Fee:</strong> Usually <strong>more expensive</strong> because you're withdrawing cash.</p>
+                <p><strong>Example:</strong> Withdrawing TZS 100,000 with M-Pesa costs TZS 2,800.</p>
+                <p><strong>Disadvantage:</strong> Fees are high and can be up to 3% of the amount.</p>
+            </div>
+        </div>
+
+        <h2>Comparison Table (TZS 100,000)</h2>
+        <table>
+            <tr>
+                <th>Provider</th>
+                <th>Send Fee</th>
+                <th>Withdraw Fee</th>
+                <th>Difference</th>
+            </tr>
+            <tr>
+                <td>M-Pesa</td>
+                <td>TZS 350</td>
+                <td>TZS 2,800</td>
+                <td class="highlight">TZS 2,450</td>
+            </tr>
+            <tr>
+                <td>Tigo Pesa</td>
+                <td>TZS 350</td>
+                <td>TZS 2,800</td>
+                <td class="highlight">TZS 2,450</td>
+            </tr>
+            <tr>
+                <td>Airtel Money</td>
+                <td>TZS 200</td>
+                <td>TZS 1,200</td>
+                <td class="highlight">TZS 1,000</td>
+            </tr>
+            <tr>
+                <td>AzamPesa</td>
+                <td>TZS 1,000</td>
+                <td>TZS 1,000</td>
+                <td>TZS 0</td>
+            </tr>
+            <tr>
+                <td>Selcom Pesa</td>
+                <td>TZS 1,900</td>
+                <td>TZS 1,900</td>
+                <td>TZS 0</td>
+            </tr>
+        </table>
+
+        <div class="warning-box">
+            <strong>⚠️ Note:</strong> For M-Pesa and Tigo Pesa, withdrawing TZS 100,000 is <strong>TZS 2,450 more expensive</strong> than sending. This is a significant difference!
+        </div>
+
+        <h2>Why is Withdrawing More Expensive?</h2>
+
+        <ul>
+            <li><strong>Agent costs:</strong> Agents charge a fee for their service.</li>
+            <li><strong>Government taxes:</strong> There are specific taxes on cash withdrawals.</li>
+            <li><strong>Cash handling costs:</strong> Mobile network operators incur costs for transporting cash to agents.</li>
+        </ul>
+
+        <h2>How to Save Money</h2>
+
+        <h3>1. Avoid Withdrawing Unless Necessary</h3>
+        <p>If you can, <strong>avoid withdrawing cash</strong> from agents. Instead, use your money for mobile transactions or direct payments.</p>
+
+        <h3>2. Use Banks or Bank Agents</h3>
+        <p>Withdrawing money through a bank or bank agent (like NMB, CRDB) can be <strong>cheaper</strong> than using a mobile money agent.</p>
+
+        <h3>3. Compare Before You Withdraw</h3>
+        <p>If you must withdraw, <strong>compare the fees</strong> of different providers. For example:</p>
+        <ul>
+            <li>For TZS 100,000, AzamPesa charges only TZS 1,000.</li>
+            <li>For TZS 100,000, Selcom Pesa charges only TZS 1,900.</li>
+        </ul>
+
+        <h3>4. Split Large Amounts</h3>
+        <p>As we saw in the first article, splitting large amounts can <strong>reduce your fees</strong>.</p>
+
+        <h3>5. Use Kikotoo cha Makato</h3>
+        <p>Our <strong>Kikotoo cha Makato</strong> app helps you compare sending and withdrawal fees for all providers. You can see the fees <strong>before</strong> you make your transaction.</p>
+
+        <h2>Comparison Table (TZS 300,000)</h2>
+        <table>
+            <tr>
+                <th>Provider</th>
+                <th>Send Fee</th>
+                <th>Withdraw Fee</th>
+                <th>Difference</th>
+            </tr>
+            <tr>
+                <td>M-Pesa</td>
+                <td>TZS 850</td>
+                <td>TZS 4,500</td>
+                <td class="highlight">TZS 3,650</td>
+            </tr>
+            <tr>
+                <td>Tigo Pesa</td>
+                <td>TZS 850</td>
+                <td>TZS 4,500</td>
+                <td class="highlight">TZS 3,650</td>
+            </tr>
+            <tr>
+                <td>Airtel Money</td>
+                <td>TZS 1,200</td>
+                <td>TZS 4,500</td>
+                <td class="highlight">TZS 3,300</td>
+            </tr>
+            <tr>
+                <td>AzamPesa</td>
+                <td>TZS 1,900</td>
+                <td>TZS 1,900</td>
+                <td>TZS 0</td>
+            </tr>
+            <tr>
+                <td>Selcom Pesa</td>
+                <td>TZS 1,900</td>
+                <td>TZS 1,900</td>
+                <td>TZS 0</td>
+            </tr>
+        </table>
+
+        <h2>Conclusion</h2>
+        <p>Sending and withdrawing money are different transactions with <strong>different fees</strong>. Typically, <strong>withdrawing is more expensive</strong> than sending.</p>
+
+        <div class="tip-box">
+            <strong>💡 Remember:</strong> Before making any transaction, <strong>compare the fees</strong> and choose the cheapest option. Use <strong>Kikotoo cha Makato</strong> to calculate fees before you send or withdraw.
+        </div>
+
+        <a href="index.html" class="back-btn">⬅ Back to App</a>
+    </div>
+
+    <script>
+        document.getElementById('date').textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    </script>
+</body>
+</html>

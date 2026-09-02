@@ -3,7 +3,15 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+h1{
+    display:flex;
+    align-items: center;
+    gap:10px;
+}
+.logo-img{
+    width: 40px;
+    height: auto;
+}
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #f0f4f8;

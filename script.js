@@ -164,7 +164,7 @@ function findBestSplit(amount, type, provider = 'M-Pesa') {
 function displayResults(amount, type) {
     const resultsDiv = document.getElementById('results');
     if (!resultsDiv) {
-        console.error('❌ Element ya "results" haipatikani!');
+        console.error('❌ "results" Element is not available !');
         return;
     }
 
@@ -176,12 +176,12 @@ function displayResults(amount, type) {
 
     const minFee = Math.min(...results.map(r => r.fee));
 
-    let html = `<h3 style="margin-bottom:15px;color:#1a2a3a;font-size:18px;">📊 Matokeo</h3>`;
+    let html = `<h3 style="margin-bottom:15px;color:#1a2a3a;font-size:18px;">📊 Results </h3>`;
 
     results.forEach(({ provider, fee }) => {
         const isBest = (fee === minFee && fee > 0);
         const feeClass = getColorClass(provider);
-        const bestLabel = isBest ? `<span class="best-label">⭐ Nafuu</span>` : '';
+        const bestLabel = isBest ? `<span class="best-label">⭐ Cheap </span>` : '';
 
         html += `
             <div class="result-card ${isBest ? 'best' : ''}">
@@ -202,18 +202,18 @@ function displayResults(amount, type) {
             const [part1, part2] = bestSplit.split;
             html += `
                 <div class="split-tip">
-                    <strong>💡 Kidokezo cha Smart Split</strong>
+                    <strong>💡 Tips for  Smart Split</strong>
                     <div style="margin-top:8px;padding:10px;background:white;border-radius:8px;">
                         <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
-                            <span>Mara moja:</span>
+                            <span>Immediately:</span>
                             <span style="color:#dc2626;font-weight:700;">${formatFee(originalFee)}</span>
                         </div>
                         <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
-                            <span>Gawanya TZS ${amount.toLocaleString()} → TZS ${part1.toLocaleString()} + TZS ${part2.toLocaleString()}:</span>
+                            <span>Divide  TZS ${amount.toLocaleString()} → TZS ${part1.toLocaleString()} + TZS ${part2.toLocaleString()}:</span>
                             <span style="color:#16a34a;font-weight:700;">${formatFee(bestSplit.totalFee)}</span>
                         </div>
                         <div style="display:flex;justify-content:space-between;border-top:2px solid #e2e8f0;padding-top:8px;margin-top:5px;">
-                            <span style="font-size:16px;font-weight:700;">💰 UNAOKOA:</span>
+                            <span style="font-size:16px;font-weight:700;">💰 You Save :</span>
                             <span style="color:#16a34a;font-size:18px;font-weight:700;">${formatFee(bestSplit.savings)}</span>
                         </div>
                     </div>
@@ -223,7 +223,7 @@ function displayResults(amount, type) {
     }
 
     resultsDiv.innerHTML = html;
-    console.log('✅ Matokeo yameonyeshwa!');
+    console.log('✅ Results Are Shown!');
 
 
 // ============================================================
@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const amount = parseInt(document.getElementById('amount').value) || 0;
             const type = document.getElementById('type').value;
             if (amount < 1) {
-                alert('Tafadhali ingiza kiasi sahihi.');
+                alert('Please Enter the Right Amount.');
                 return;
             }
             displayResults(amount, type);

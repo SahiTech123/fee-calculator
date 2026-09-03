@@ -1,7 +1,7 @@
 {
-  "name": "Kikokotoo cha Makato Tanzania",
-  "short_name": "Makato",
-  "description": "Kikokotoo cha kulinganisha makato ya huduma za malipo Tanzania kwa matumizi ya simu ya mkononi.",
+  "name": "Fee Calculator Tanzania",
+  "short_name": "FeeCalc",
+  "description": "Fee Calculator for compairing the transaction fees of Mobile Service Providers in Tanzania .",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
